@@ -4,9 +4,9 @@
 
 int main() {
 
-	std::cout << "Orthogonal Dungeon\n";
+	std::cout << "Orthofonal Dungeon\n";
 
-	sf::RenderWindow window(sf::VideoMode(640, 480), "Orthogonal Dungeon");
+	sf::RenderWindow window(sf::VideoMode(640, 480), "Orthofonal Dungeon");
 
     while (window.isOpen()) {
         sf::Event event;
@@ -17,5 +17,5 @@ int main() {
         }
     }
 
-	getchar();
+    system("pause");
 }
