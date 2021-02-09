@@ -13,22 +13,15 @@
 namespace box {
 
 	template<typename T = char>
-	class bitmap_t {
+	class bitmap {
 
 	public:
 
 		using value_type = T;
 
-		bitmap_t(dim_t size);
+		bitmap(dim_t size);
 
-		void clear(uint32_t rgba = 0) {
-			uint32_t* p = (uint32_t*)raw.data();
-			auto i = raw.size() >> 2;
-			while(i--) {
-				*(p) = rgba;
-				p++;
-			}
-		}
+		void clear(uint32_t rgba = 0);
 
 	private:
 
@@ -38,9 +31,19 @@ namespace box {
 	};
 
 	template<typename T>
-	inline bitmap_t<T>::bitmap_t(dim_t size) :
+	inline bitmap<T>::bitmap  (dim_t size) :
 		size(size),
 		raw(std::vector<T>(static_cast<int>(size.width * size.height)))
 	{}
+
+	template<typename T>
+	inline void bitmap<T>::clear(uint32_t rgba) {
+		uint32_t* p = (uint32_t*)raw.data();
+		auto i = raw.size() >> 2;
+		while (i--) {
+			*(p) = rgba;
+			p++;
+		}
+	}
 
 }
